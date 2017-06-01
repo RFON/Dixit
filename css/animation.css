@@ -1,0 +1,53 @@
+.pop-in-animate{
+    -webkit-animation: popIn 0.5s;
+    animation: popIn 0.5s;
+}
+
+.pop-out-animate{
+    -webkit-animation: popOut 0.5s;
+    animation: popOut 0.5s
+}
+
+@keyframes popIn{
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@-webkit-keyframes popIn{
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@keyframes popOut{
+    0%{
+        width: 100px;
+        height: 100px;
+    }
+    100%{
+        width: 0;
+        height: 0;
+    }
+}
+
+@-webkit-keyframes popOut{
+    0%{
+        width: 100px;
+        height: 100px;
+    }
+    100%{
+        width: 0;
+        height: 0;
+    }
+}
