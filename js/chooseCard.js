@@ -10,13 +10,13 @@ pictureHouse[5] = 'images/dixit-test5.jpg'
 pictureHouse[6] = 'images/dixit-test6.jpg'
 function create(cardNum) {
     for (let i = 0; i < cardNum; i++) {
+        cardID = 'card' + i
         let card = document.createElement("li")
         let cardPicture = `<img src = ${pictureHouse[i]}>`
-        // let picture = document.createElement("img")
         $("#card-box").append(card)
         $(card).append(cardPicture)
         $(card).addClass("card-in-hand")
-        $(card).attr('id', 'card' + i)
+        $(card).attr('id', cardID)
     }
 }
 create(7)
@@ -29,16 +29,13 @@ $(".card-in-hand").mouseleave(function () {
     $(this).removeClass("card-in-hand-hover")
 })
 
-$(".card-in-hand").click(function () {
+$("li").click(function () {
     cardID = $(this).attr('id')
     cloneID = cardID + 'clone'
-    let selectButton = document.createElement("div")
-    let cancelButton = document.createElement("div")
-    $("body").append($(selectButton).attr("id", "select-button"), $(cancelButton).attr("id", "cancel-button"))
-    $("#select-button").addClass("select-cancel-button select-button pop-in-animate")
-    $("#select-button").append("<img src = 'images/icon/ic_done_white_36dp_2x.png'>")
-    $("#cancel-button").addClass("select-cancel-button cancel-button pop-in-animate")
-    $("#cancel-button").append("<img src = 'images/icon/ic_clear_white_36dp_2x.png'>")
+    $("#select-button").show()
+    $("#cancel-button").show()
+    $("#select-button").addClass("pop-in-animate")
+    $("#cancel-button").addClass("pop-in-animate")
     $("#select-button").addClass("select-cancel-button-size")
     $("#cancel-button").addClass("select-cancel-button-size")
     $("#card-box").append($("#" + cardID).clone().attr('id', cloneID))
@@ -49,20 +46,41 @@ $(".card-in-hand").click(function () {
         height: '480px'
     }, 500)
     $("#shelter").fadeIn(500)
+    setTimeout(function () {
+        $("#select-button").removeClass("pop-in-animate")
+        $("#cancel-button").removeClass("pop-in-animate")
+    }, 500);
 })
 
 $("#shelter").click(function () {
+    itemsPopOut()
+})
+$("#cancel-button").click(function () {
+    itemsPopOut()
+})
+
+$("#select-button").click(function(){
+    $(".card-selected").removeClass("card-selected")
+    $("#"+cardID).addClass("card-selected")
+    itemsPopOut()
+})
+
+function itemsPopOut(){
     $("#" + cloneID).animate({
         width: 0,
         height: 0
     }, 500)
-    $(this).fadeOut(500)
     $("#" + cardID).show(500)
+    $("#shelter").fadeOut(500)
     $("#select-button").addClass("pop-out-animate")
     $("#cancel-button").addClass("pop-out-animate")
     setTimeout(function () {
         $("#" + cloneID).remove()
-        $("#select-button").remove()
-        $("#cancel-button").remove()
+        $("#select-button").removeClass("select-cancel-button-size")
+        $("#cancel-button").removeClass("select-cancel-button-size")
+        $("#select-button").removeClass("pop-out-animate")
+        $("#cancel-button").removeClass("pop-out-animate")
+        $("#select-button").hide()
+        $("#cancel-button").hide()
     }, 500)
-})
+}

@@ -1,32 +1,33 @@
 body{
-    background-image: url(../images/background-picture.jpg);
-    background-size: 100%;
+    background-image: url(../images/background-1920px.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 .card-box{
     position: absolute;
     bottom: 0;
     width: 100%;
-    min-width: 1400px;
     height: 340px;
-    /*background-color: transparent;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;*/
+    justify-content: center;
+    align-items: center;
 }
 
 .card-in-hand{
-    width: 200px;
-    height: 300px;
+    width: 150px;
+    height: 225px;
     border-radius: 10px;
-    background-color: green;
+    background-color: #fff;
     margin: 5px 5px;
-    float: left;
+    /*float: left;*/
     transition: transform 0.4s;
     box-shadow: 5px 5px 20px #000;
+    border: 3px solid #fff;
 }
 
 .card-in-hand:hover{
@@ -73,13 +74,19 @@ body{
 }
 
 .select-button{
-    left: 25%;
+    left: 400px;
     background-color: lawngreen;
 }
 
 .cancel-button{
     background-color: red;
-    right: 25%;
+    right: 400px;
+}
+
+.button-initial-size{
+    width: 0px;
+    height: 0px;
+    display: none;
 }
 
 .select-cancel-button-size{
@@ -96,5 +103,61 @@ body{
 .select-cancel-button img{
     width: 100%;
     height: 100%;
+}
+
+.card-selected img{
+    opacity: 0.5;
+}
+
+@media screen and (max-width : 1400px){
+    .select-button{
+        left: 300px;
+    }
+    .cancel-button{
+        right: 300px;
+    }
+}
+
+@media screen and (max-width : 1300px){
+    body{
+        background-image: url(../images/background-1400px.jpg);
+        background-size: cover;
+    }
+    .card-in-hand{
+        width: 100px;
+        height: 150px;
+    }
+    .select-button{
+        left: 250px;
+    }
+    .cancel-button{
+        right: 250px;
+    }
+}
+
+@media screen and (max-width : 1200px){
+    .select-button{
+        left: 200px;
+    }
+    .cancel-button{
+        right: 200px;
+    }
+}
+
+@media screen and (max-width : 1000px){
+    body{
+        background-image: url(../images/background-1400px.jpg);
+        background-size: cover;
+    }
+    .card-in-hand{
+        width: 80px;
+        height: 120px;
+    }
+    .select-button{
+        left: 150px;
+    }
+    .cancel-button{
+        right: 150px;
+    }
 }
 
