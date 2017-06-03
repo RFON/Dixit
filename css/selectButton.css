@@ -1,0 +1,70 @@
+.button-box{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 99;
+    width: 680px;
+    height: 100px;
+    display: none;
+}
+
+.select-cancel-button{
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.select-cancel-button:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+
+.select-button{ 
+    float: left;
+    background-color: lawngreen;
+}
+
+.cancel-button{
+    float: right;
+    background-color: red;
+}
+
+.button-initial-size{
+    width: 0px;
+    height: 0px;
+}
+
+.select-cancel-button-size{
+    width: 100px;
+    height: 100px;
+}
+
+.select-cancel-button img{
+    width: 100%;
+    height: 100%;
+}
+.pop-in-animate{
+    -webkit-animation: popIn 0.3s;
+    animation: popIn 0.3s;
+}
+
+.pop-out-animate{
+    -webkit-animation: popOut 0.3s;
+    animation: popOut 0.3s
+}
+
+
+@media screen and (max-width : 700px){
+    .button-box{
+        position: fixed;
+        top: auto;
+        bottom: 50px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+    }
+}
+

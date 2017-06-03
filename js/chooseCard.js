@@ -8,6 +8,7 @@ pictureHouse[3] = 'images/dixit-test3.jpg'
 pictureHouse[4] = 'images/dixit-test4.jpg'
 pictureHouse[5] = 'images/dixit-test5.jpg'
 pictureHouse[6] = 'images/dixit-test6.jpg'
+var styles = getComputedStyle(document.documentElement)
 function create(cardNum) {
     for (let i = 0; i < cardNum; i++) {
         cardID = 'card' + i
@@ -19,6 +20,7 @@ function create(cardNum) {
         $(card).attr('id', cardID)
     }
 }
+
 create(7)
 
 $(".card-in-hand").mouseenter(function () {
@@ -30,26 +32,29 @@ $(".card-in-hand").mouseleave(function () {
 })
 
 $("li").click(function () {
+    var cardWidth = String(styles.getPropertyValue("--card-selected-width"))
+    var cardHeight = String(styles.getPropertyValue("--card-selected-height"))
+    console.log(cardWidth,cardHeight)
     cardID = $(this).attr('id')
     cloneID = cardID + 'clone'
-    $("#select-button").show()
-    $("#cancel-button").show()
+    $("#button-box").show()
     $("#select-button").addClass("pop-in-animate")
     $("#cancel-button").addClass("pop-in-animate")
     $("#select-button").addClass("select-cancel-button-size")
     $("#cancel-button").addClass("select-cancel-button-size")
-    $("#card-box").append($("#" + cardID).clone().attr('id', cloneID))
-    $("#" + cardID).hide(500)
+    $("body").append($("#" + cardID).clone().attr('id', cloneID))
+    $("#" + cardID).hide(300)
     $("#" + cloneID).addClass("card-select")
+    $("#" + cloneID).removeClass("card-selected")
     $("#" + cloneID).animate({
-        width: '320px',
-        height: '480px'
-    }, 500)
-    $("#shelter").fadeIn(500)
+        width: cardWidth,
+        height: cardHeight
+    }, 300)
+    $("#shelter").fadeIn(300)
     setTimeout(function () {
         $("#select-button").removeClass("pop-in-animate")
         $("#cancel-button").removeClass("pop-in-animate")
-    }, 500);
+    }, 300);
 })
 
 $("#shelter").click(function () {
@@ -69,9 +74,9 @@ function itemsPopOut(){
     $("#" + cloneID).animate({
         width: 0,
         height: 0
-    }, 500)
-    $("#" + cardID).show(500)
-    $("#shelter").fadeOut(500)
+    }, 300)
+    $("#" + cardID).show(300)
+    $("#shelter").fadeOut(300)
     $("#select-button").addClass("pop-out-animate")
     $("#cancel-button").addClass("pop-out-animate")
     setTimeout(function () {
@@ -80,7 +85,6 @@ function itemsPopOut(){
         $("#cancel-button").removeClass("select-cancel-button-size")
         $("#select-button").removeClass("pop-out-animate")
         $("#cancel-button").removeClass("pop-out-animate")
-        $("#select-button").hide()
-        $("#cancel-button").hide()
-    }, 500)
+        $("#button-box").hide()
+    }, 300)
 }

@@ -1,13 +1,3 @@
-.pop-in-animate{
-    -webkit-animation: popIn 0.5s;
-    animation: popIn 0.5s;
-}
-
-.pop-out-animate{
-    -webkit-animation: popOut 0.5s;
-    animation: popOut 0.5s
-}
-
 @keyframes popIn{
     0%{
         width: 0;
